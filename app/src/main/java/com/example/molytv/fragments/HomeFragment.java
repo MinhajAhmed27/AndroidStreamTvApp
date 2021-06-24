@@ -36,11 +36,9 @@ import java.util.TimerTask;
 public class HomeFragment extends Fragment implements MovieItemClickListener {
 
     private List<Slide> lstSlides ;
-    private ViewPager sliderpager;
-    private TabLayout indicator;
-    private RecyclerView MoviesRV ;
-    private ViewPager sliderpager2;
-    private TabLayout indicator2;
+    private ViewPager sliderpager,sliderpager2,sliderpager3,sliderpager4;
+    private TabLayout indicator,indicator2,indicator3,indicator4;
+    private RecyclerView MoviesRV,MoviesRV2 ;
     Context thisContext;
 
     @Nullable
@@ -52,11 +50,18 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         thisContext = container.getContext();
 
         sliderpager = view.findViewById(R.id.slider_pager) ;
-        indicator = view.findViewById(R.id.indicator);
-        MoviesRV = view.findViewById(R.id.Rv_movies);
-
         sliderpager2 = view.findViewById(R.id.slider_pager2) ;
+        sliderpager3 = view.findViewById(R.id.slider_pager3) ;
+        sliderpager4 = view.findViewById(R.id.slider_pager4) ;
+
+
+        MoviesRV = view.findViewById(R.id.Rv_movies);
+        MoviesRV2 = view.findViewById(R.id.Rv_movies2);
+
+        indicator = view.findViewById(R.id.indicator);
         indicator2 = view.findViewById(R.id.indicator2);
+        indicator3 = view.findViewById(R.id.indicator3);
+        indicator4 = view.findViewById(R.id.indicator4);
 //
 //        // prepare a list of slides ..
         lstSlides = new ArrayList<>() ;
@@ -67,12 +72,16 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         SliderPagerAdapter adapter = new SliderPagerAdapter(thisContext,lstSlides);
         sliderpager.setAdapter(adapter);
         sliderpager2.setAdapter(adapter);
+        sliderpager3.setAdapter(adapter);
+        sliderpager4.setAdapter(adapter);
 
 //        // setup timer
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new HomeFragment.SliderTimer(),4000,6000);
         indicator.setupWithViewPager(sliderpager,true);
         indicator2.setupWithViewPager(sliderpager2,true);
+        indicator3.setupWithViewPager(sliderpager,true);
+        indicator4.setupWithViewPager(sliderpager2,true);
 
 //        // Recyclerview Setup
 //        // ini data
@@ -89,6 +98,8 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         MovieAdapter movieAdapter = new MovieAdapter(thisContext,lstMovies,this);
         MoviesRV.setAdapter(movieAdapter);
         MoviesRV.setLayoutManager(new LinearLayoutManager(thisContext,LinearLayoutManager.HORIZONTAL,false));
+        MoviesRV2.setAdapter(movieAdapter);
+        MoviesRV2.setLayoutManager(new LinearLayoutManager(thisContext,LinearLayoutManager.HORIZONTAL,false));
 
         return view;
     }

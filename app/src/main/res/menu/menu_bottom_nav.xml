@@ -6,10 +6,11 @@
         android:icon="@drawable/ic_home">
     </item>
     <item
-        android:id="@+id/category"
-        android:title="Category"
-        android:icon="@drawable/ic_home">
+    android:id="@+id/category"
+    android:title="Category"
+    android:icon="@drawable/ic_home">
     </item>
+
     <item
         android:id="@+id/more"
         android:title="More"
