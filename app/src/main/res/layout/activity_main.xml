@@ -14,7 +14,8 @@
         android:layout_height="0dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         app:itemIconTint="@drawable/bottom_nav_selector"
         app:itemTextColor="@color/light_grey"
@@ -52,10 +53,6 @@
             android:layout_height="wrap_content"
             android:text="Feature" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_baseline_live_tv_24" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

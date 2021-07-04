@@ -12,6 +12,12 @@
     </item>
 
     <item
+        android:id="@+id/live"
+        android:title="Live"
+        android:icon="@drawable/ic_home">
+    </item>
+
+    <item
         android:id="@+id/more"
         android:title="More"
         android:icon="@drawable/ic_more">

@@ -132,8 +132,8 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
     class SliderTimer extends TimerTask {
         @Override
         public void run() {
-        //https://stackoverflow.com/questions/16425146/runonuithread-in-fragment
-        //https://stackoverflow.com/questions/8215308/using-context-in-a-fragment
+            //https://stackoverflow.com/questions/16425146/runonuithread-in-fragment
+            //https://stackoverflow.com/questions/8215308/using-context-in-a-fragment
 
             mHandler.post(new Runnable() {
                 @Override
