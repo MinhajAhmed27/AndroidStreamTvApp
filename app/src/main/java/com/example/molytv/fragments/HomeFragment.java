@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -109,6 +111,21 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 //         here we send movie information to detail activity
 //         also we ll create the transition animation between the two activity
 
+        //Put the value
+        MovieDetailFragment fragmentMovieDetail = new MovieDetailFragment ();
+        Bundle bundle = new Bundle();
+        bundle.putString("title", movie.getTitle());
+        bundle.putInt("imgURL", movie.getThumbnail());
+        bundle.putInt("imgCover", movie.getCoverPhoto());
+        fragmentMovieDetail.setArguments(bundle);
+
+        //Inflate the fragment
+        replaceFragment(fragmentMovieDetail);
+        //TODO
+        // lets crezte the animation
+//        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeActivity.this,
+//                movieImageView,"sharedName");
+
 //        Intent intent = new Intent(this,MovieDetailActivity.class);
 //        // send movie information to deatilActivity
 //        intent.putExtra("title",movie.getTitle());
@@ -124,6 +141,14 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         Toast.makeText(thisContext,"item clicked : " + movie.getTitle(),Toast.LENGTH_LONG).show();
 //         it works great
 
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private Handler mHandler = new Handler(Looper.getMainLooper());

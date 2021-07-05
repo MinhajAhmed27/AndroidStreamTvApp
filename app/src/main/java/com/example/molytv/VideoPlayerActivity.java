@@ -1,29 +1,18 @@
-package com.example.molytv.fragments;
+package com.example.molytv;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 
-import com.example.molytv.MainActivity;
-import com.example.molytv.R;
-import com.example.molytv.adapters.IOnFocusListenable;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.util.Util;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class LiveFragment extends Fragment {
-
+public class VideoPlayerActivity extends AppCompatActivity {
     SimpleExoPlayer player;
     PlayerView playerView;
 
@@ -34,38 +23,25 @@ public class LiveFragment extends Fragment {
     String videoURL = "https://media.geeksforgeeks.org/wp-content/uploads/20201217163353/Screenrecorder-2020-12-17-16-32-03-350.mp4";
 //    String videoURL = "https://www.youtube.com/watch?v=4HC-v65q4V8&ab_channel=CafeMusicBGMchannel";
 
-    Context context;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        context = getActivity().getApplicationContext();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_video_player);
 
 
-        View view =  inflater.inflate(R.layout.fragment_live, container, false);
-
-        BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_nav);
-//        navBar.setVisibility(View.INVISIBLE);
-
-         playerView = view.findViewById(R.id.video_view);
-        ImageButton bt = view.findViewById(R.id.exo_close);
+        playerView = findViewById(R.id.video_view);
+        ImageButton bt = findViewById(R.id.exo_close);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showSystemUI();
-                getActivity().onBackPressed();
-                navBar.setVisibility(View.VISIBLE);
-//              getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
+                VideoPlayerActivity.this.finish();
             }
         });
-
-
-        return view;
     }
 
     private void initializePlayer() {
 
-        player = new SimpleExoPlayer.Builder(context).build();
+        player = new SimpleExoPlayer.Builder(this).build();
         playerView.setPlayer(player);
         MediaItem mediaItem = MediaItem.fromUri(getString(R.string.media_url_mp4));
         player.setMediaItem(mediaItem);
@@ -131,19 +107,19 @@ public class LiveFragment extends Fragment {
 
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-    }
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//    }
 
     private void showSystemUI() {
-        View decorView = getActivity().getWindow().getDecorView();
+        View decorView = this.getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        );
+        );
     }
 
 //
@@ -172,4 +148,6 @@ public class LiveFragment extends Fragment {
 //        }
 
 
+
 }
+
