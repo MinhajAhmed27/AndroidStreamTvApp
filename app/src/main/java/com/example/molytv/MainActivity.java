@@ -11,11 +11,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.molytv.adapters.IOnFocusListenable;
 import com.example.molytv.fragments.CategoryFragment;
 import com.example.molytv.fragments.FavFragment;
 import com.example.molytv.fragments.HomeFragment;
-import com.example.molytv.fragments.LiveFragment;
 import com.example.molytv.fragments.LiveStreamFragment;
 import com.example.molytv.fragments.MoreFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -106,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).addToBackStack(null).commit();
             SetDefaultSelectedFragmentForTablayout(selectedFragment);
 
 
