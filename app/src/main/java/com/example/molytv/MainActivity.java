@@ -1,6 +1,7 @@
 package com.example.molytv;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView =findViewById(R.id.bottom_nav);
 
         tabLayout = findViewById(R.id.tabLayoutTop);
+        tabLayout.setVisibility(View.VISIBLE);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -87,19 +89,15 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.home:
                     selectedFragment=new HomeFragment();
-                    tabLayout.setVisibility(View.VISIBLE);
                     break;
                 case R.id.category:
                     selectedFragment=new CategoryFragment();
-                    tabLayout.setVisibility(View.VISIBLE);
                     break;
                 case R.id.live:
                     selectedFragment=new LiveStreamFragment();
-                    tabLayout.setVisibility(View.GONE);
                     break;
                 case R.id.more:
                     selectedFragment=new MoreFragment();
-                    tabLayout.setVisibility(View.GONE);
                     mainLayout.setBackgroundColor(Color.WHITE);
                     break;
 

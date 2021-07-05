@@ -13,6 +13,13 @@ import com.example.molytv.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class MoreFragment extends Fragment {
+
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
+        tabLayout.setVisibility(View.GONE);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

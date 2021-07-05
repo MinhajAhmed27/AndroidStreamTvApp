@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 
     private List<Slide> lstSlides ;
     private ViewPager sliderpager,sliderpager2,sliderpager3,sliderpager4;
-    private TabLayout indicator,indicator2,indicator3,indicator4;
+    private TabLayout indicator,indicator2,indicator3,indicator4,tabLayout;
     private RecyclerView MoviesRV,MoviesRV2 ;
     Context thisContext;
 
@@ -50,7 +50,8 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 //        super.onCreate(savedInstanceState);
 
         thisContext = container.getContext();
-
+        tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
+        tabLayout.setVisibility(View.VISIBLE);
         sliderpager = view.findViewById(R.id.slider_pager) ;
         sliderpager2 = view.findViewById(R.id.slider_pager2) ;
         sliderpager3 = view.findViewById(R.id.slider_pager3) ;
@@ -119,35 +120,28 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         bundle.putInt("imgCover", movie.getCoverPhoto());
         fragmentMovieDetail.setArguments(bundle);
 
-        //Inflate the fragment
-        replaceFragment(fragmentMovieDetail);
-        //TODO
         // lets crezte the animation
-//        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeActivity.this,
-//                movieImageView,"sharedName");
 
-//        Intent intent = new Intent(this,MovieDetailActivity.class);
-//        // send movie information to deatilActivity
-//        intent.putExtra("title",movie.getTitle());
-//        intent.putExtra("imgURL",movie.getThumbnail());
-//        intent.putExtra("imgCover",movie.getCoverPhoto());
-//        // lets crezte the animation
+
+
+        replaceFragment(fragmentMovieDetail,movieImageView);
+
+
 //        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeActivity.this,
 //                movieImageView,"sharedName");
 //
 //        startActivity(intent,options.toBundle());
 
-//         i will make a simple test to see if the click works
-        Toast.makeText(thisContext,"item clicked : " + movie.getTitle(),Toast.LENGTH_LONG).show();
-//         it works great
-
     }
 
-    private void replaceFragment(Fragment fragment) {
+    private void replaceFragment(Fragment fragment, ImageView movieImageView) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().addSharedElement(movieImageView, "sharedName");
         fragmentTransaction.replace(R.id.fragment_container, fragment);
+
         fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.addSharedElement(movieImageView, "sharedName");
+
         fragmentTransaction.commit();
     }
 
