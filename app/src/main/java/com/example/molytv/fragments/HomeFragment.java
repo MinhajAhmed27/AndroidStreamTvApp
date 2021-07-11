@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.molytv.MoviePlayerActivity;
 import com.example.molytv.R;
 import com.example.molytv.adapters.MovieAdapter;
 import com.example.molytv.adapters.MovieItemClickListener;
@@ -37,7 +38,7 @@ import java.util.TimerTask;
 
 public class HomeFragment extends Fragment implements MovieItemClickListener {
 
-    private List<Slide> lstSlides ;
+    private List<Slide> lstSlides,lstSlides2, lstSlides3 ;
     private ViewPager sliderpager,sliderpager2,sliderpager3,sliderpager4;
     private TabLayout indicator,indicator2,indicator3,indicator4,tabLayout;
     private RecyclerView MoviesRV,MoviesRV2 ;
@@ -47,7 +48,9 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home,container,false);
-//        super.onCreate(savedInstanceState);
+
+
+
 
         thisContext = container.getContext();
         tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
@@ -68,19 +71,35 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 //
 //        // prepare a list of slides ..
         lstSlides = new ArrayList<>() ;
-        lstSlides.add(new Slide(R.drawable.slide1,"Slide Title \nmore text here"));
-        lstSlides.add(new Slide(R.drawable.slide2,"Slide Title \nmore text here"));
-        lstSlides.add(new Slide(R.drawable.slide1,"Slide Title \nmore text here"));
-        lstSlides.add(new Slide(R.drawable.slide2,"Slide Title \nmore text here"));
-        SliderPagerAdapter adapter = new SliderPagerAdapter(thisContext,lstSlides);
+        lstSlides2 = new ArrayList<>() ;
+        lstSlides3 = new ArrayList<>() ;
+
+        lstSlides.add(new Slide(R.drawable.silder1one,"Exclusive","zIzI0SPYdWY"));
+        lstSlides.add(new Slide(R.drawable.img11,"Escape II","P6iZhLvKbVE"));
+        lstSlides.add(new Slide(R.drawable.img13,"HOW TO VLOG - FIRST TIME","xMylvQZ_L_Q"));
+
+
+
+        lstSlides3.add(new Slide(R.drawable.silder2two,"LAX PERFORMS @ SXSW2018","P6iZhLvKbVE"));
+        lstSlides3.add(new Slide(R.drawable.img13,"LAX PERFORMS @ SXSW2018","a2a-ynXL65M"));
+        lstSlides3.add(new Slide(R.drawable.img12,"MORIENTEZ- Acoustic Version of His single “See you Smile”","HR2fQ4fDVMw"));
+
+        lstSlides2.add(new Slide(R.drawable.img14,"Escape II","P6iZhLvKbVE"));
+        lstSlides2.add(new Slide(R.drawable.slider14,"\"Her\" Youtube Series, Black Women in the US","wcTVpw_vD8M"));
+
+        SliderPagerAdapter adapter = new SliderPagerAdapter(thisContext,lstSlides,this);
+        SliderPagerAdapter adapter2 = new SliderPagerAdapter(thisContext,lstSlides2,this);
+        SliderPagerAdapter adapter3 = new SliderPagerAdapter(thisContext,lstSlides3,this);
+        SliderPagerAdapter adapter4 = new SliderPagerAdapter(thisContext,lstSlides,this);
+
         sliderpager.setAdapter(adapter);
-        sliderpager2.setAdapter(adapter);
-        sliderpager3.setAdapter(adapter);
-        sliderpager4.setAdapter(adapter);
+        sliderpager2.setAdapter(adapter2);
+        sliderpager3.setAdapter(adapter3);
+        sliderpager4.setAdapter(adapter4);
 
 //        // setup timer
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new HomeFragment.SliderTimer(),4000,6000);
+//        timer.scheduleAtFixedRate(new HomeFragment.SliderTimer(),4000,6000);
         indicator.setupWithViewPager(sliderpager,true);
         indicator2.setupWithViewPager(sliderpager2,true);
         indicator3.setupWithViewPager(sliderpager,true);
@@ -90,13 +109,45 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 //        // ini data
 
         List<Movie> lstMovies = new ArrayList<>();
-        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.spidercover));
-        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.spidercover));
-        lstMovies.add(new Movie("The Martian",R.drawable.themartian,R.drawable.spidercover));
-        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.spidercover));
-        lstMovies.add(new Movie("The Martian",R.drawable.themartian,R.drawable.spidercover));
-        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.spidercover));
-        lstMovies.add(new Movie("The Martian",R.drawable.themartian,R.drawable.spidercover));
+
+//        Adding recylerview content
+
+        lstMovies.add(new Movie("MOLY TEASER",
+                "MOLY TV is an online television platform celebrating and showcasing the best of entertainment",
+                R.drawable.molyshow,
+                R.drawable.molyshow,
+                "Moly Tv", "5-Start",
+                "OgGx131D6bc"));
+
+        lstMovies.add(new Movie("ESCAPE I",
+                "ESCAPE IS AN ACTION DRAMA, IT IS ABOUT  RELATIONSHIP, FRIENDSHIP AND IT ALSO INVOLVES CRIME",
+                R.drawable.image1rv,
+                R.drawable.slider14,
+                "Moly Tv", "5-Start",
+                "P6iZhLvKbVE"));
+
+        lstMovies.add(new Movie("Black Women",
+                "Her story, her Dream, Her Life. Discover the woman in Her. Different women from all works of life share their stories... as real as it can be.",
+                R.drawable.molyshow2,
+                R.drawable.img11,
+                "Moly Tv", "5-Start",
+                "wcTVpw_vD8M"));
+
+        lstMovies.add(new Movie("MOLY TEASER",
+                "ESCAPE IS AN ACTION DRAMA, IT IS ABOUT  RELATIONSHIP, FRIENDSHIP AND IT ALSO INVOLVES CRIME",
+                R.drawable.imgrv2,
+                R.drawable.img12,
+                "Moly Tv", "5-Start",
+                "P6iZhLvKbVE"));
+
+//        lstMovies.add(new Movie("Moana",R.drawable.image1rv,R.drawable.slider14));
+//        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.molyshow2));
+//        lstMovies.add(new Movie("The Martian",R.drawable.themartian,R.drawable.img11));
+//        lstMovies.add(new Movie("Moana",R.drawable.moana,R.drawable.spidercover));
+//        lstMovies.add(new Movie("The Martian",R.drawable.themartian,R.drawable.spidercover));
+//        lstMovies.add(new Movie("Black P",R.drawable.blackp,R.drawable.spidercover));
+//        lstMovies.add(new Movie("The Martian",R.drawable.themartian,R.drawable.spidercover));
+
 
         MovieAdapter movieAdapter = new MovieAdapter(thisContext,lstMovies,this);
         MoviesRV.setAdapter(movieAdapter);
@@ -118,10 +169,11 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         bundle.putString("title", movie.getTitle());
         bundle.putInt("imgURL", movie.getThumbnail());
         bundle.putInt("imgCover", movie.getCoverPhoto());
+        bundle.putString("description", movie.getDescription());
+        bundle.putString("videoLink", movie.getStreamingLink());
         fragmentMovieDetail.setArguments(bundle);
 
         // lets crezte the animation
-
 
 
         replaceFragment(fragmentMovieDetail,movieImageView);
@@ -132,6 +184,15 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 //
 //        startActivity(intent,options.toBundle());
 
+    }
+
+    @Override
+    public void onMovieHomeClick(Slide slide) {
+        Intent i = new Intent(getActivity(), MoviePlayerActivity.class);
+
+        i.putExtra("videoLink", slide.getLink());
+
+        startActivity(i);
     }
 
     private void replaceFragment(Fragment fragment, ImageView movieImageView) {
@@ -148,25 +209,25 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
     private Handler mHandler = new Handler(Looper.getMainLooper());
 
 
-    class SliderTimer extends TimerTask {
-        @Override
-        public void run() {
-            //https://stackoverflow.com/questions/16425146/runonuithread-in-fragment
-            //https://stackoverflow.com/questions/8215308/using-context-in-a-fragment
-
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (sliderpager.getCurrentItem()<lstSlides.size()-1) {
-                        sliderpager.setCurrentItem(sliderpager.getCurrentItem()+1);
-                        sliderpager2.setCurrentItem(sliderpager2.getCurrentItem()+1);
-                    }
-                    else
-                        sliderpager.setCurrentItem(0);
-                    sliderpager2.setCurrentItem(0);
-                }
-            });
-        }
-    }
+//    class SliderTimer extends TimerTask {
+//        @Override
+//        public void run() {
+//            //https://stackoverflow.com/questions/16425146/runonuithread-in-fragment
+//            //https://stackoverflow.com/questions/8215308/using-context-in-a-fragment
+//
+//            mHandler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if (sliderpager.getCurrentItem()<lstSlides.size()-1) {
+//                        sliderpager.setCurrentItem(sliderpager.getCurrentItem()+1);
+//                        sliderpager2.setCurrentItem(sliderpager2.getCurrentItem()+1);
+//                    }
+//                    else
+//                        sliderpager.setCurrentItem(0);
+//                    sliderpager2.setCurrentItem(0);
+//                }
+//            });
+//        }
+//    }
 
 }

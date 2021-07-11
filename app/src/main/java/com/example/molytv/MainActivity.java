@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         return DefaultSelectedFragment;
     }
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {

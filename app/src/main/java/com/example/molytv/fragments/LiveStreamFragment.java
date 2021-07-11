@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.molytv.LiveTvPlayerActivity;
+import com.example.molytv.MoviePlayerActivity;
 import com.example.molytv.R;
 import com.example.molytv.VideoPlayerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,26 +31,23 @@ public class LiveStreamFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_live_stream, container, false);
         floatingActionButton = view.findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        floatingActionButton.setOnClickListener(v -> {
 //                BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_nav);
 //                navBar.setVisibility(View.INVISIBLE);
 //                Fragment fragment = new LiveFragment();
 //                replaceFragment(fragment);
 
-                Intent intent = new Intent(getActivity(), VideoPlayerActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getActivity(), LiveTvPlayerActivity.class);
+            startActivity(intent);
         });
         return view;
     }
 
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
-        tabLayout.setVisibility(View.GONE);
-    }
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
+//        tabLayout.setVisibility(View.GONE);
+//    }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

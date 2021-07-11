@@ -12,9 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_marginTop="180dp"
-        android:src="@drawable/splash"
+        android:layout_marginTop="240dp"
+        android:src="@drawable/molytvlogo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

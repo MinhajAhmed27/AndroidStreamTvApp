@@ -9,13 +9,12 @@
     tools:context="fragments.LiveStreamFragment">
 
 
-
     <ImageView
-        android:scaleType="centerCrop"
         android:id="@+id/slide_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/themartian" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/molyshow2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
