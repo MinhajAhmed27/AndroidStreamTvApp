@@ -1,6 +1,7 @@
 package com.example.molytv.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.molytv.MoviePlayerActivity;
 import com.example.molytv.R;
 import com.example.molytv.models.Slide;
 
@@ -21,10 +23,14 @@ public class SliderPagerAdapter extends PagerAdapter {
     private Context mContext ;
     private List<Slide> mList ;
 
+    MovieItemClickListener movieItemClickListener;
 
-    public SliderPagerAdapter(Context mContext, List<Slide> mList) {
+
+    public SliderPagerAdapter(Context mContext, List<Slide> mList,MovieItemClickListener listener) {
         this.mContext = mContext;
         this.mList = mList;
+        movieItemClickListener = listener;
+
     }
 
 
@@ -46,13 +52,16 @@ public class SliderPagerAdapter extends PagerAdapter {
         slideLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((position) == 0) {
-                    Toast.makeText(mContext, "One", Toast.LENGTH_SHORT).show();
-                } else if(position == 1) {
-                    Toast.makeText(mContext, "Two", Toast.LENGTH_SHORT).show();
-                } else if(position == 2) {
-                    Toast.makeText(mContext, "Three", Toast.LENGTH_SHORT).show();
-                }
+//                if((position) == 0) {
+//                    Toast.makeText(mContext, "One", Toast.LENGTH_SHORT).show();
+//                } else if(position == 1) {
+//                    Toast.makeText(mContext, "Two", Toast.LENGTH_SHORT).show();
+//                } else if(position == 2) {
+//                    Toast.makeText(mContext, "Three", Toast.LENGTH_SHORT).show();
+//                }
+
+                movieItemClickListener.onMovieHomeClick(mList.get(position));
+
             }
         });
 
