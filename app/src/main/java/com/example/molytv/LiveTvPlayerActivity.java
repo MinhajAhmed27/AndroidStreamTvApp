@@ -25,7 +25,6 @@ public class LiveTvPlayerActivity extends YouTubeBaseActivity {
 
         youTubePlay = findViewById(R.id.LiveYoutubePlayer);
 
-
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {

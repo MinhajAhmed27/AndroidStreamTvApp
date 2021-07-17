@@ -1,6 +1,6 @@
 package com.example.molytv.models;
 
-public class Movie {
+public class Movie{
 
     private String title;
     private String description;
@@ -89,4 +89,5 @@ public class Movie {
     public void setStreamingLink(String streamingLink) {
         this.streamingLink = streamingLink;
     }
+
 }

@@ -50,8 +50,6 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         View view =  inflater.inflate(R.layout.fragment_home,container,false);
 
 
-
-
         thisContext = container.getContext();
         tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
         tabLayout.setVisibility(View.VISIBLE);
@@ -164,7 +162,7 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 //         also we ll create the transition animation between the two activity
 
         //Put the value
-        MovieDetailFragment fragmentMovieDetail = new MovieDetailFragment ();
+        MovieDetailFragment fragmentMovieDetail = new MovieDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putString("title", movie.getTitle());
         bundle.putInt("imgURL", movie.getThumbnail());
@@ -187,7 +185,7 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
     }
 
     @Override
-    public void onMovieHomeClick(Slide slide) {
+    public void onMovieSlideClick(Slide slide) {
         Intent i = new Intent(getActivity(), MoviePlayerActivity.class);
 
         i.putExtra("videoLink", slide.getLink());

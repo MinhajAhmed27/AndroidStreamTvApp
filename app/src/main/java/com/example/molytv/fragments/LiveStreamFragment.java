@@ -39,6 +39,7 @@ public class LiveStreamFragment extends Fragment {
 
             Intent intent = new Intent(getActivity(), LiveTvPlayerActivity.class);
             startActivity(intent);
+
         });
         return view;
     }
@@ -48,11 +49,5 @@ public class LiveStreamFragment extends Fragment {
 //        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
 //        tabLayout.setVisibility(View.GONE);
 //    }
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
+
 }

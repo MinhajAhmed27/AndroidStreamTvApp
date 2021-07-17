@@ -57,6 +57,7 @@ public class MovieDetailFragment extends Fragment {
                     startActivity(i);
         });
 
+
         return view;
     }
     void iniViews(View view) {

@@ -60,7 +60,7 @@ public class SliderPagerAdapter extends PagerAdapter {
 //                    Toast.makeText(mContext, "Three", Toast.LENGTH_SHORT).show();
 //                }
 
-                movieItemClickListener.onMovieHomeClick(mList.get(position));
+                movieItemClickListener.onMovieSlideClick(mList.get(position));
 
             }
         });
