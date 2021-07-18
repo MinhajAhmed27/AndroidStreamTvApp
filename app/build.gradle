@@ -66,5 +66,7 @@ dependencies {
 
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.3'
 
+    implementation 'com.google.code.gson:gson:2.8.7'
+
 
 }

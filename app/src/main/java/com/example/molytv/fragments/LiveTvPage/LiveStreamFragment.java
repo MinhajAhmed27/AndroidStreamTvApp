@@ -1,25 +1,16 @@
-package com.example.molytv.fragments;
+package com.example.molytv.fragments.LiveTvPage;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.molytv.LiveTvPlayerActivity;
-import com.example.molytv.MoviePlayerActivity;
 import com.example.molytv.R;
-import com.example.molytv.VideoPlayerActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
 
 public class LiveStreamFragment extends Fragment {
 

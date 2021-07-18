@@ -1,4 +1,4 @@
-package com.example.molytv.fragments;
+package com.example.molytv.fragments.CategoryPage;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 
-import com.example.molytv.LiveTvPlayerActivity;
 import com.example.molytv.MoviePlayerActivity;
 import com.example.molytv.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

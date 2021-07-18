@@ -1,4 +1,4 @@
-package com.example.molytv.fragments;
+package com.example.molytv.fragments.MoreSettingsPage;
 
 import android.content.Context;
 import android.content.Intent;

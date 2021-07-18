@@ -13,9 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragments.CategoryMovieDetailFragment"></activity>
+        <activity android:name=".fragments.CategoryPage.CategoryMovieDetailFragment"></activity>
         <activity
-            android:name=".LiveTvPlayerActivity"
+            android:name=".fragments.LiveTvPage.LiveTvPlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".MoviePlayerActivity"

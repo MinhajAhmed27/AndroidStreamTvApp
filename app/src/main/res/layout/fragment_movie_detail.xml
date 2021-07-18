@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MovieDetailFragment"
+    tools:context=".fragments.HomePage.MovieDetailFragment"
     android:background="@color/colorPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,8 +29,10 @@
             android:src="@drawable/gradient_bg"
             app:layout_constraintBottom_toBottomOf="@+id/detail_movie_cover"
             app:layout_constraintEnd_toEndOf="@+id/detail_movie_cover"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/detail_movie_cover" />
+            app:layout_constraintTop_toTopOf="@+id/detail_movie_cover"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/play_fab"
@@ -86,6 +88,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_img" />
+
+        <ImageView
+            android:id="@+id/imgFavItem"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_movie_cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_movie_img" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

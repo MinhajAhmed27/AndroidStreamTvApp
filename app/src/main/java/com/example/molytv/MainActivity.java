@@ -1,7 +1,6 @@
 package com.example.molytv;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -12,11 +11,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.molytv.fragments.CategoryFragment;
-import com.example.molytv.fragments.FavFragment;
-import com.example.molytv.fragments.HomeFragment;
-import com.example.molytv.fragments.LiveStreamFragment;
-import com.example.molytv.fragments.MoreFragment;
+import com.example.molytv.fragments.CategoryPage.CategoryFragment;
+import com.example.molytv.fragments.FavoritePage.FavFragment;
+import com.example.molytv.fragments.HomePage.HomeFragment;
+import com.example.molytv.fragments.LiveTvPage.LiveStreamFragment;
+import com.example.molytv.fragments.MoreSettingsPage.MoreFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 

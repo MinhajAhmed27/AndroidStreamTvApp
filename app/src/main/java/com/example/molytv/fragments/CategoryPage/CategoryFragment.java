@@ -1,4 +1,4 @@
-package com.example.molytv.fragments;
+package com.example.molytv.fragments.CategoryPage;
 
 import android.os.Bundle;
         import android.view.LayoutInflater;
@@ -13,13 +13,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.molytv.R;
-import com.example.molytv.adapters.MovieItemClickListener;
-import com.example.molytv.models.Movie;
-import com.example.molytv.models.Slide;
+import com.example.molytv.fragments.ListOfMoviesFragment;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryFragment extends Fragment{
 
