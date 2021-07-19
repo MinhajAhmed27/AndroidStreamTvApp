@@ -36,7 +36,8 @@ public class LiveTvPlayerActivity extends YouTubeBaseActivity {
 //                youTubePlayer.loadPlaylist("PLfA45DOnRB1lathPGvJJNgqs5rZQ_RkwD");
 
 //                youTubePlayer.loadVideo("kf-PCH-JmeM");
-                youTubePlayer.loadVideo("aa7thsuTjk4");
+//                youTubePlayer.loadVideo("aa7thsuTjk4");
+                youTubePlayer.loadVideo("zlsdlxe1c3Y");
             }
 
             @Override

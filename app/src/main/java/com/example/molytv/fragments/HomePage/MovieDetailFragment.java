@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,24 +15,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.example.molytv.MoviePlayerActivity;
 import com.example.molytv.R;
-import com.example.molytv.VideoPlayerActivity;
 import com.example.molytv.models.Movie;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -53,6 +46,7 @@ public class MovieDetailFragment extends Fragment {
 
 
     public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String key = "videoKey";
     SharedPreferences sharedPreferences;
 
     @Override
@@ -82,7 +76,7 @@ public class MovieDetailFragment extends Fragment {
 
             i.putExtra("videoLink", VideoLink);
 
-                    startActivity(i);
+            startActivity(i);
         });
 
 
@@ -107,18 +101,17 @@ public class MovieDetailFragment extends Fragment {
             if(!favItem){
 //                if not favorite then make it. and save it to Shared Preferences.
                 //Retrieve the values
-                String getData = sharedPreferences.getString("Set", "");
+                String getData = sharedPreferences.getString(key, "");
                 if(getData.isEmpty()){
                     List<String> videoLinkList = new ArrayList<>();
                     videoLinkList.add(VideoLink);
 
                     String jsonList = gson.toJson(videoLinkList);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("Set",jsonList );
+                    editor.putString(key,jsonList );
                     editor.apply(); //before it was .commit!
 //                    Toast.makeText(getActivity(),jsonList.toString(),Toast.LENGTH_LONG).show();
 
-                    imgFavItem.setImageResource(R.drawable.ic_baseline_favorite_24);
                 }
                 else {
                     Type type = new TypeToken<List<String>>() {
@@ -132,20 +125,22 @@ public class MovieDetailFragment extends Fragment {
                     //then restore the list to SP
                     String jsonList = gson.toJson(movieList);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("Set",jsonList );
+                    editor.putString(key,jsonList );
                     editor.apply(); //before it was .commit!
 
-//                    Toast.makeText(getActivity(),"Added in fav",Toast.LENGTH_LONG).show();
-//                        Toast.makeText(getActivity(),jsonList,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"Added in fav",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),jsonList,Toast.LENGTH_LONG).show();
+
                 }
                 favItem =true;
+                imgFavItem.setImageResource(R.drawable.ic_baseline_favorite_24);
             }
             else {
                 //if is favorite then remove it
 //                Removing movie
                 Type type = new TypeToken<List<String>>() {
                 }.getType();
-                String getData = sharedPreferences.getString("Set", "");
+                String getData = sharedPreferences.getString(key, "");
                 List<String> movieList = gson.fromJson(getData, type);
                 movieList.remove(VideoLink);
                 Toast.makeText(getActivity(),"Remove from favorite",Toast.LENGTH_SHORT).show();
@@ -155,9 +150,9 @@ public class MovieDetailFragment extends Fragment {
 //                updating SP
                 String jsonList = gson.toJson(movieList);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("Set",jsonList );
+                editor.putString(key,jsonList );
                 editor.apply(); //before it was .commit!
-//                Toast.makeText(getActivity(),jsonList,Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),jsonList,Toast.LENGTH_LONG).show();
 
 
                 favItem = false;
@@ -170,16 +165,6 @@ public class MovieDetailFragment extends Fragment {
 
         return view;
     }
-
-//    void saveData(){
-//        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-//        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//
-//        // write all the data entered by the user in SharedPreference and apply
-//        myEdit.putString("name", name.getText().toString());
-//        myEdit.putInt("age", Integer.parseInt(age.getText().toString()));
-//        myEdit.apply();
-//    }
 
     void iniViews(View view) {
         play_fab = view.findViewById(R.id.play_fab);
@@ -221,17 +206,20 @@ public class MovieDetailFragment extends Fragment {
         MovieCoverImg.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.scale_animation));
         play_fab.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.scale_animation));
 
-        String getData = sharedPreferences.getString("Set", "");
+        String getData = sharedPreferences.getString(key, "");
         Type type = new TypeToken<List<String>>() {
         }.getType();
         //deserialize the list and add VideoLink
         Gson gson =new Gson();
         List<String> movieList = gson.fromJson(getData, type);
-        if(movieList.contains(VideoLink)){
-            favItem = true;
-        }else {
-            favItem = false;
+        if(movieList!=null){
+            if(movieList.contains(VideoLink)){
+                favItem = true;
+            }else {
+                favItem = false;
+            }
         }
+
 
     }
 

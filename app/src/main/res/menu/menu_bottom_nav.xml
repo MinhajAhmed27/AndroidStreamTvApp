@@ -14,7 +14,7 @@
     <item
         android:id="@+id/live"
         android:title="Live"
-        android:icon="@drawable/ic_home">
+        android:icon="@drawable/ic_livepng">
     </item>
 
     <item
