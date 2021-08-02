@@ -1,5 +1,6 @@
 package com.example.molytv.fragments.CategoryPage;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -18,17 +19,44 @@ import com.google.android.material.tabs.TabLayout;
 
 public class CategoryFragment extends Fragment{
 
+    View view;
+    TabLayout tabLayout;
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
-        tabLayout.setVisibility(View.VISIBLE);
+        if(getActivity()!=null){
+            tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
+            tabLayout.setVisibility(View.VISIBLE);
+        }
+
+
     }
+
+    //TO STOP ORIENTATION
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if(getActivity()!=null){
+//            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        }
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        if(getActivity()!=null){
+//            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+//        }
+//    }
 
     ImageView catImageView1,catImageView2,catImageView3;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_category,container,false);
+
+        if(view==null){
+            view =  inflater.inflate(R.layout.fragment_category,container,false);
+        }
+
 
         catImageView1 = view.findViewById(R.id.CatImageView1);
         catImageView2 = view.findViewById(R.id.CatImageView2);

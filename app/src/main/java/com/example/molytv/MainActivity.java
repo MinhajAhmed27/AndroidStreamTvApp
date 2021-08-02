@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.example.molytv.fragments.CategoryPage.CategoryFragment;
 import com.example.molytv.fragments.FavoritePage.FavFragment;
+import com.example.molytv.fragments.FavoritePage.ListOfFavoriteMoviesFragment;
 import com.example.molytv.fragments.HomePage.HomeFragment;
 import com.example.molytv.fragments.LiveTvPage.LiveStreamFragment;
 import com.example.molytv.fragments.MoreSettingsPage.MoreFragment;
@@ -51,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,GetSelectedFragmentForTab()).commit();
                         break;
                     case 1:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FavFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ListOfFavoriteMoviesFragment()).commit();
                         break;
-
                 }
             }
             @Override
@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+            tabLayout.getTabAt(0).select();//default top navigation
+
             Fragment selectedFragment = null;
             switch (item.getItemId()){
                 case R.id.home:
@@ -92,13 +94,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.category:
                     selectedFragment=new CategoryFragment();
+//                    tabLayout.setVisibility(View.VISIBLE);
+
                     break;
                 case R.id.live:
                     selectedFragment=new LiveStreamFragment();
                     break;
                 case R.id.more:
                     selectedFragment=new MoreFragment();
-                    mainLayout.setBackgroundColor(Color.WHITE);
+//                    tabLayout.setVisibility(View.GONE);
                     break;
 
             }

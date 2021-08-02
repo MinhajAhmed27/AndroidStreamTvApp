@@ -31,19 +31,14 @@ public class ListOfFavoriteMoviesFragment extends Fragment implements MovieItemC
                              Bundle savedInstanceState) {
 
         TabLayout tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
-        tabLayout.setVisibility(View.GONE);
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_list_of_movies, container, false);
+        View view =  inflater.inflate(R.layout.list_of_fav_movies, container, false);
         thisContext = container.getContext();
-        movieListRv = view.findViewById(R.id.Rv_movies_list);
+        movieListRv = view.findViewById(R.id.Rv_fav_movies_list);
 
         List<Movie> lstMovies = new ArrayList<>();
         lstMovies.add(new Movie("MOLY TEASER", "MOLY TV is an online television platform celebrating and showcasing the best of entertainment", R.drawable.silder2two, R.drawable.silder2two, "Moly Tv", "5-Start", "OgGx131D6bc"));
-        lstMovies.add(new Movie("ESCAPE I", "ESCAPE IS AN ACTION DRAMA, IT IS ABOUT  RELATIONSHIP, FRIENDSHIP AND IT ALSO INVOLVES CRIME", R.drawable.slide2, R.drawable.slide2, "Moly Tv", "5-Start", "P6iZhLvKbVE"));
         lstMovies.add(new Movie("MOLY TEASER", "MOLY TV is an online television platform celebrating and showcasing the best of entertainment", R.drawable.img11, R.drawable.img11, "Moly Tv", "5-Start", "OgGx131D6bc"));
-        lstMovies.add(new Movie("ESCAPE I", "ESCAPE IS AN ACTION DRAMA, IT IS ABOUT  RELATIONSHIP, FRIENDSHIP AND IT ALSO INVOLVES CRIME", R.drawable.silder2two, R.drawable.slider14, "Moly Tv", "5-Start", "P6iZhLvKbVE"));
-        lstMovies.add(new Movie("MOLY TEASER", "MOLY TV is an online television platform celebrating and showcasing the best of entertainment", R.drawable.slider14, R.drawable.molyshow, "Moly Tv", "5-Start", "OgGx131D6bc"));
-        lstMovies.add(new Movie("ESCAPE I", "ESCAPE IS AN ACTION DRAMA, IT IS ABOUT  RELATIONSHIP, FRIENDSHIP AND IT ALSO INVOLVES CRIME", R.drawable.img13, R.drawable.slider14, "Moly Tv", "5-Start", "P6iZhLvKbVE"));
 
 
 

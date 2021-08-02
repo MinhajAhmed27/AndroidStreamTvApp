@@ -24,6 +24,7 @@ import com.example.molytv.R;
 import com.example.molytv.adapters.MovieAdapter;
 import com.example.molytv.adapters.MovieItemClickListener;
 import com.example.molytv.adapters.SliderPagerAdapter;
+import com.example.molytv.fragments.LiveTvPage.LiveTvPlayerActivity;
 import com.example.molytv.models.Movie;
 import com.example.molytv.models.Slide;
 import com.google.android.material.tabs.TabLayout;
@@ -38,17 +39,29 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
     private ViewPager sliderpager,sliderpager2,sliderpager3,sliderpager4;
     private TabLayout indicator,indicator2,indicator3,indicator4,tabLayout;
     private RecyclerView MoviesRV,MoviesRV2 ;
-    Context thisContext;
+    View view;
+    ImageView imageViewILoveArt;
+
+//    var root:View?=null
+        Context thisContext;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_home,container,false);
+        if(view==null){
+            view =  inflater.inflate(R.layout.fragment_home,container,false);
 
+        }
 
         thisContext = container.getContext();
         tabLayout = getActivity().findViewById(R.id.tabLayoutTop);
         tabLayout.setVisibility(View.VISIBLE);
+        imageViewILoveArt =view.findViewById(R.id.imageViewILoveArt);
+        imageViewILoveArt.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LiveTvPlayerActivity.class);
+            startActivity(intent);
+        });
+
         sliderpager = view.findViewById(R.id.slider_pager) ;
         sliderpager2 = view.findViewById(R.id.slider_pager2) ;
         sliderpager3 = view.findViewById(R.id.slider_pager3) ;

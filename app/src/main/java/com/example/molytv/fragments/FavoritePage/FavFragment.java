@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.molytv.R;
+import com.google.android.material.tabs.TabLayout;
 
 public class FavFragment extends Fragment {
 //
@@ -21,12 +22,13 @@ public class FavFragment extends Fragment {
 //        sharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
     }
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          View view = inflater.inflate(R.layout.fragment_fav, container, false);
-//
 //        if(getListFromSP()!=null){
 //
 //        };
